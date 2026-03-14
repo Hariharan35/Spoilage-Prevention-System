@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spoilage Prevention System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header><h1>Spoilage Prevention System</h1></header>
+
+<!-- LOGIN PAGE -->
+<div class="login-container" id="login-page">
+  <div class="login-box">
+    <h2>Login</h2>
+    <select id="role">
+      <option value="">Select Role</option>
+      <option value="user">User</option>
+      <option value="driver">Driver</option>
+    </select>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="login-error" style="color:red;"></p>
+    <p>Don't have an account? <span class="register-link" onclick="showRegister()">Register</span></p>
+  </div>
+  
+  <div class="register-box" id="register-box">
+    <h2>Register</h2>
+    <select id="reg-role">
+      <option value="">Select Role</option>
+      <option value="user">User</option>
+      <option value="driver">Driver</option>
+    </select>
+    <input type="text" id="reg-username" placeholder="Username">
+    <input type="password" id="reg-password" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <p id="reg-error" style="color:red;"></p>
+    <p>Already have an account? <span class="register-link" onclick="showLogin()">Login</span></p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <button class="logout-btn" onclick="logout()">Logout</button>
+  <header>
+    <h1 id="dashboard-title"></h1>
+    <p>Monitoring FEFO scheduling & humidity risks</p>
+  </header>
+
+  <main>
+    <section id="items">
+      <h2>Perishable Goods</h2>
+      <ul id="goods-list"></ul>
+      <button id="mark-delivered" onclick="markDelivered()" style="display:none;">Mark Delivered</button>
+    </section>
+
+    <section id="humidity">
+      <h2>Humidity Monitoring</h2>
+      <p>Current Humidity: <span id="humidity-value">--</span>%</p>
+      <canvas id="humidityChart"></canvas>
+      <p id="alert"></p>
+    </section>
+  </main>
+
+  <footer><p>&copy; 2026</p></footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
